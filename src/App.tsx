@@ -25,12 +25,16 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8 space-y-8">
-      <h1 className="text-3xl font-bold text-center">ทำเนียบสมาชิกสภาผู้แทนราษฎร</h1>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 p-8">
+      <h1 className="text-4xl font-extrabold text-center mb-8 text-blue-900">
+        ทำเนียบสมาชิกสภาผู้แทนราษฎร
+      </h1>
 
-      <MemberForm onSubmit={handleSubmit} initialData={editingMember || undefined} />
+      <div className="max-w-4xl mx-auto mb-12">
+        <MemberForm onSubmit={handleSubmit} initialData={editingMember || undefined} />
+      </div>
 
-      <div className="grid gap-4">
+      <div className="max-w-5xl mx-auto grid gap-6 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {members.map(member => (
           <MemberCard
             key={member.id}

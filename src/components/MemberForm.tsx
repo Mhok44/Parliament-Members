@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import {  MemberSchema, type Member } from "../types/Member";
+import type { Member } from "../types/Member";
+import { MemberSchema } from "../types/Member";
 
 type Props = {
   onSubmit: (data: Member) => void;
@@ -25,57 +26,60 @@ export default function MemberForm({ onSubmit, initialData }: Props) {
   });
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 p-4 bg-white shadow rounded">
-      <div className="flex gap-4">
-        <div className="flex-1">
-          <label className="block font-semibold">คำนำหน้า</label>
-          <input {...register("title")} className="w-full border rounded p-2"/>
-          {errors.title && <p className="text-red-500">{errors.title.message}</p>}
+    <form 
+      onSubmit={handleSubmit(onSubmit)} 
+      className="bg-white shadow-lg rounded-lg p-6 space-y-6"
+    >
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div>
+          <label className="block font-medium text-gray-700">คำนำหน้า</label>
+          <input {...register("title")} className="mt-1 w-full border border-gray-300 rounded p-2 focus:ring-blue-500 focus:border-blue-500"/>
+          {errors.title && <p className="text-red-500 text-sm mt-1">{errors.title.message}</p>}
         </div>
-        <div className="flex-1">
-          <label className="block font-semibold">ชื่อ</label>
-          <input {...register("firstName")} className="w-full border rounded p-2"/>
-          {errors.firstName && <p className="text-red-500">{errors.firstName.message}</p>}
+        <div>
+          <label className="block font-medium text-gray-700">ชื่อ</label>
+          <input {...register("firstName")} className="mt-1 w-full border border-gray-300 rounded p-2 focus:ring-blue-500 focus:border-blue-500"/>
+          {errors.firstName && <p className="text-red-500 text-sm mt-1">{errors.firstName.message}</p>}
         </div>
-        <div className="flex-1">
-          <label className="block font-semibold">นามสกุล</label>
-          <input {...register("lastName")} className="w-full border rounded p-2"/>
-          {errors.lastName && <p className="text-red-500">{errors.lastName.message}</p>}
+        <div>
+          <label className="block font-medium text-gray-700">นามสกุล</label>
+          <input {...register("lastName")} className="mt-1 w-full border border-gray-300 rounded p-2 focus:ring-blue-500 focus:border-blue-500"/>
+          {errors.lastName && <p className="text-red-500 text-sm mt-1">{errors.lastName.message}</p>}
         </div>
       </div>
 
       <div>
-        <label className="block font-semibold">รูปถ่าย (URL)</label>
-        <input {...register("photo")} className="w-full border rounded p-2"/>
-        {errors.photo && <p className="text-red-500">{errors.photo.message}</p>}
+        <label className="block font-medium text-gray-700">รูปถ่าย (URL)</label>
+        <input {...register("photo")} className="mt-1 w-full border border-gray-300 rounded p-2 focus:ring-blue-500 focus:border-blue-500"/>
+        {errors.photo && <p className="text-red-500 text-sm mt-1">{errors.photo.message}</p>}
       </div>
 
       <div>
-        <label className="block font-semibold">ประวัติการทำงาน</label>
-        <textarea {...register("career")} className="w-full border rounded p-2"/>
+        <label className="block font-medium text-gray-700">ประวัติการทำงาน</label>
+        <textarea {...register("career")} className="mt-1 w-full border border-gray-300 rounded p-2 focus:ring-blue-500 focus:border-blue-500"/>
       </div>
 
       <div>
-        <label className="block font-semibold">ผลงานที่ผ่านมา</label>
-        <textarea {...register("achievements")} className="w-full border rounded p-2"/>
+        <label className="block font-medium text-gray-700">ผลงานที่ผ่านมา</label>
+        <textarea {...register("achievements")} className="mt-1 w-full border border-gray-300 rounded p-2 focus:ring-blue-500 focus:border-blue-500"/>
       </div>
 
-      <div className="flex gap-4">
-        <div className="flex-1">
-          <label className="block font-semibold">ตำแหน่งรัฐมนตรี</label>
-          <input {...register("ministerPosition")} className="w-full border rounded p-2"/>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div>
+          <label className="block font-medium text-gray-700">ตำแหน่งรัฐมนตรี</label>
+          <input {...register("ministerPosition")} className="mt-1 w-full border border-gray-300 rounded p-2 focus:ring-blue-500 focus:border-blue-500"/>
         </div>
-        <div className="flex-1">
-          <label className="block font-semibold">กระทรวง</label>
-          <input {...register("ministry")} className="w-full border rounded p-2"/>
+        <div>
+          <label className="block font-medium text-gray-700">กระทรวง</label>
+          <input {...register("ministry")} className="mt-1 w-full border border-gray-300 rounded p-2 focus:ring-blue-500 focus:border-blue-500"/>
         </div>
-        <div className="flex-1">
-          <label className="block font-semibold">สังกัดพรรค</label>
-          <input {...register("party")} className="w-full border rounded p-2"/>
+        <div>
+          <label className="block font-medium text-gray-700">สังกัดพรรค</label>
+          <input {...register("party")} className="mt-1 w-full border border-gray-300 rounded p-2 focus:ring-blue-500 focus:border-blue-500"/>
         </div>
       </div>
 
-      <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+      <button type="submit" className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
         บันทึก
       </button>
     </form>
